@@ -1,0 +1,15 @@
+#!/bin/bash
+
+# Let runit capture all script error messages
+exec 2>&1
+
+<%= render("mount_point_check.erb") %>
+
+exec chpst -P -u <%= @options[:user] %> \
+  /usr/bin/env \
+    current_pidfile=<%= node['gitlab'][@options[:service]]['pidfile'] %> \
+    rails_app=<%= @options[:rails_app] %> \
+    user=<%= @options[:user] %> \
+    environment=<%= node['gitlab'][@options[:rails_app]]['environment'] %> \
+    unicorn_rb=<%= @options[:unicorn_rb] %> \
+    /opt/gitlab/embedded/bin/gitlab-unicorn-wrapper
