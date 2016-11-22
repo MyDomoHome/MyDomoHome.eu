@@ -1,0 +1,17 @@
+*.gem
+.bundle
+vendor/bundle
+pkg/*
+.vagrant
+bin/*
+files/**/cache/
+vendor/cookbooks
+.ruby-version
+.ruby-gemset
+.rvmrc
+.rbenv-version
+build.txt
+Vagrantfile
+.idea
+*.log
+docker/RELEASE
